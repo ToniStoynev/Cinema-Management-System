@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using CinemaManagementSystem.Domain.Cinemas.Exceptions;
-using CinemaManagementSystem.Domain.Common;
-using CinemaManagementSystem.Domain.Common.Models;
-
-namespace CinemaManagementSystem.Domain.Cinemas.Models.Cinemas
+﻿namespace CinemaManagementSystem.Domain.Cinemas.Models.Cinemas
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using Exceptions;
+    using Common;
+    using CinemaManagementSystem.Domain.Common.Models;
+
     public class Cinema : Entity<int>, IAggregateRoot
     {
         private readonly HashSet<Room> rooms;

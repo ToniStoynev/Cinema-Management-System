@@ -1,12 +1,27 @@
-﻿namespace CinemaManagementSystem.Domain.Common.Models
+﻿using System.Collections.Generic;
+using System.Linq;
+
+namespace CinemaManagementSystem.Domain.Common.Models
 {
 
-    public abstract class Entity<TId>
+    public abstract class Entity<TId> : IEntity
         where TId : struct
     {
+        private readonly ICollection<IDomainEvent> events;
+
+        protected Entity() => this.events = new List<IDomainEvent>();
+
         public TId Id { get; private set; } = default;
 
-        public override bool Equals(object obj)
+        public IReadOnlyCollection<IDomainEvent> Events
+            => this.events.ToList().AsReadOnly();
+
+        public void ClearEvents() => this.events.Clear();
+
+        protected void RaiseEvent(IDomainEvent domainEvent)
+            => this.events.Add(domainEvent);
+
+        public override bool Equals(object? obj)
         {
             if (!(obj is Entity<TId> other))
             {
@@ -31,7 +46,7 @@
             return this.Id.Equals(other.Id);
         }
 
-        public static bool operator ==(Entity<TId> first, Entity<TId> second)
+        public static bool operator ==(Entity<TId>? first, Entity<TId>? second)
         {
             if (first is null && second is null)
             {
@@ -46,9 +61,9 @@
             return first.Equals(second);
         }
 
-        public static bool operator !=(Entity<TId> first, Entity<TId> second) => !(first == second);
-        
+        public static bool operator !=(Entity<TId>? first, Entity<TId>? second) => !(first == second);
 
         public override int GetHashCode() => (this.GetType().ToString() + this.Id).GetHashCode();
     }
 }
+

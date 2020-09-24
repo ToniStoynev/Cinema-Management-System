@@ -1,8 +1,7 @@
-﻿using CinemaManagementSystem.Domain.Cinemas.Exceptions;
-using CinemaManagementSystem.Domain.Common.Models;
-
-namespace CinemaManagementSystem.Domain.Cinemas.Models.Cinemas
+﻿namespace CinemaManagementSystem.Domain.Cinemas.Models.Cinemas
 {
+    using Exceptions;
+    using CinemaManagementSystem.Domain.Common.Models;
     using static ModelConstants.Movie;
     public class Movie : ValueObject
     {

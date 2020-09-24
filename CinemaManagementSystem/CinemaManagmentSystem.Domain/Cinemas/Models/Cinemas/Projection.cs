@@ -1,14 +1,13 @@
-﻿using System;
-using CinemaManagementSystem.Domain.Cinemas.Exceptions;
-using CinemaManagementSystem.Domain.Common.Models;
-
-namespace CinemaManagementSystem.Domain.Cinemas.Models.Cinemas
+﻿namespace CinemaManagementSystem.Domain.Cinemas.Models.Cinemas
 {
+    using System;
+    using Exceptions;
+    using CinemaManagementSystem.Domain.Common.Models;
     using static ModelConstants.Projection;
+    using static  ModelConstants.Room;
     public class Projection : Entity<int>
     {
         internal Projection(
-            Room room, 
             Movie movie, 
             DateTime startDate, 
             int availableSeatsCount)
@@ -16,25 +15,16 @@ namespace CinemaManagementSystem.Domain.Cinemas.Models.Cinemas
             this.ValidateAvailableSeatsCount(availableSeatsCount);
             this.ValidateStartDate(startDate);
 
-            this.Room = room;
             this.Movie = movie;
             this.StartDate = startDate;
             this.AvailableSeatsCount = availableSeatsCount;
         }
-        public Room Room { get; private set; }
 
         public Movie Movie { get; private set; }
 
         public DateTime StartDate { get; private set; }
 
         public int AvailableSeatsCount { get; private set; }
-
-        public Projection UpdateRoom(Room room)
-        {
-            this.Room = room;
-
-            return this;
-        }
 
         public Projection UpdateMovie(Movie movie)
         {
@@ -70,7 +60,7 @@ namespace CinemaManagementSystem.Domain.Cinemas.Models.Cinemas
             => Guard.AgainstOutOfRange<InvalidProjectionException>(
                     availableSeatsCount,
                     MinAvailableSeatsCount,
-                    Room.Rows * Room.SeatsPerRow);
+                    MaxSeatsPerRow * MaxSeatsPerRow);
 
         private void ValidateStartDate(DateTime startDate)
           => Guard.AgainstInvalidDate<InvalidProjectionException>(

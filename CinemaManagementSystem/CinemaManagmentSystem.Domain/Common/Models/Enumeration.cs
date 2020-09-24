@@ -1,18 +1,18 @@
-﻿using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-
-namespace CinemaManagementSystem.Domain.Common.Models
+﻿namespace CinemaManagementSystem.Domain.Common.Models
 {
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Reflection;
     public abstract class Enumeration : IComparable
     {
         private static readonly ConcurrentDictionary<Type, IEnumerable<object>> EnumCache
-           = new ConcurrentDictionary<Type, IEnumerable<object>>();
+            = new ConcurrentDictionary<Type, IEnumerable<object>>();
+
         public int Value { get; }
 
-        public string Name { get; set; }
+        public string Name { get; }
 
         protected Enumeration(int value, string name)
         {
@@ -28,7 +28,7 @@ namespace CinemaManagementSystem.Domain.Common.Models
 
             var values = EnumCache.GetOrAdd(type, _ => type
                 .GetFields(BindingFlags.Public | BindingFlags.Static | BindingFlags.DeclaredOnly)
-                .Select(f => f.GetValue(null)));
+                .Select(f => f.GetValue(null)!));
 
             return values.Cast<T>();
         }
@@ -67,7 +67,7 @@ namespace CinemaManagementSystem.Domain.Common.Models
             return matchingItem;
         }
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
             if (!(obj is Enumeration otherValue))
             {
@@ -82,6 +82,6 @@ namespace CinemaManagementSystem.Domain.Common.Models
 
         public override int GetHashCode() => (this.GetType().ToString() + this.Value).GetHashCode();
 
-        public int CompareTo(object other) => this.Value.CompareTo(((Enumeration)other).Value);
+        public int CompareTo(object? other) => this.Value.CompareTo(((Enumeration)other!).Value);
     }
 }

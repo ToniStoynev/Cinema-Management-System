@@ -4,7 +4,7 @@ namespace CinemaManagementSystem.Domain.Common
 {
     public abstract class BaseDomainException : Exception
     {
-        private string error;
+        private string? error;
 
         public string Error
         {

@@ -1,15 +1,14 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-
-namespace CinemaManagementSystem.Domain.Common.Models
+﻿namespace CinemaManagementSystem.Domain.Common.Models
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Reflection;
     public abstract class ValueObject
     {
         private readonly BindingFlags privateBindingFlags = BindingFlags.Instance | BindingFlags.NonPublic
             | BindingFlags.Public;
 
-        public override bool Equals(object other)
+        public override bool Equals(object? other)
         {
             if (other == null)
             {
@@ -56,7 +55,7 @@ namespace CinemaManagementSystem.Domain.Common.Models
             return fields
                 .Select(field => field.GetValue(this))
                 .Where(value => value != null)
-                .Aggregate(startValue, (current, value) => current * multiplier + value.GetHashCode());
+                .Aggregate(startValue, (current, value) => current * multiplier + value!.GetHashCode());
         }
 
         private IEnumerable<FieldInfo> GetFields()
@@ -68,6 +67,8 @@ namespace CinemaManagementSystem.Domain.Common.Models
             while (type != typeof(object) && type != null)
             {
                 fields.AddRange(type.GetFields(this.privateBindingFlags));
+
+                type = type.BaseType!;
             }
 
             return fields;
