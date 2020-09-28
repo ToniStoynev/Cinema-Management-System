@@ -1,6 +1,7 @@
-﻿namespace CinemaManagementSystem.Domain.Common.Models
+﻿using CinemaManagementSystem.Domain.CinemasManagment.Models.Cinemas;
+
+namespace CinemaManagementSystem.Domain.Common.Models
 {
-    using CinemaManagementSystem.Domain.Cinemas.Models.Cinemas;
     using FluentAssertions;
     using Xunit;
     public class EntitySpecs
