@@ -1,12 +1,12 @@
-﻿using Microsoft.Extensions.Hosting;
-
-namespace CinemaManagementSystem.Startup
+﻿namespace CinemaManagementSystem.Startup
 {
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Infrastructure;
+    using Microsoft.Extensions.Hosting;
+
 
     public class Startup
     {

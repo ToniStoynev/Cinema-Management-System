@@ -1,20 +1,24 @@
-﻿using CinemaManagementSystem.Domain.CinemasManagment.Models.Cinemas;
-
-namespace CinemaManagementSystem.Web.Features
+﻿namespace CinemaManagementSystem.Web.Features
 {
+    using Application.Common.Contracts;
+    using Domain.CinemasManagment.Models.Cinemas;
     using System.Collections.Generic;
     using Microsoft.AspNetCore.Mvc;
     using System.Linq;
 
 
+
     [ApiController]
+    [Route("[controller]")]
     public class CinemasController : ControllerBase
     {
-        private  static readonly Cinema cinema = new Cinema("CinemaMax", "bul. Cherni vruh 21");
+        private readonly IRepository<Cinema> cinemas;
+
+        public CinemasController(IRepository<Cinema> cinemas) => this.cinemas = cinemas;
+
 
         [HttpGet]
-        [Route("[controller]")]
-        public IEnumerable<Room> GetAll()
-            => cinema.Rooms.ToList();
+        public IEnumerable<Cinema> Get()
+            => this.cinemas.All().ToList();
     }
 }

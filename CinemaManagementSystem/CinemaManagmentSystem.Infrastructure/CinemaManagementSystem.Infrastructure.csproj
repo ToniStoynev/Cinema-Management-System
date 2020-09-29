@@ -19,10 +19,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Application\CinemaManagementSystem.Application.csproj" />
-    <ProjectReference Include="..\CinemaManagmentSystem.Domain\CinemaManagementSystem.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Cinemas\Repositories\" />
     <Folder Include="Identity\" />
     <Folder Include="Persistence\" />
   </ItemGroup>

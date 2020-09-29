@@ -1,12 +1,14 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-using CinemaManagementSystem.Domain.Common;
-
-namespace CinemaManagementSystem.Application.Common.Contracts
+﻿namespace CinemaManagementSystem.Application.Common.Contracts
 {
-    public interface IRepository<in TEntity>
+    using System.Threading;
+    using System.Threading.Tasks;
+    using CinemaManagementSystem.Domain.Common;
+    using System.Linq;
+
+    public interface IRepository<out TEntity>
         where TEntity: IAggregateRoot
     {
-        Task Save(TEntity entity, CancellationToken cancellationToken = default);
+        IQueryable<TEntity> All();
+        Task<int> SaveChanges(CancellationToken cancellationToken = default);
     }
 }

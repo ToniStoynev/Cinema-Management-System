@@ -12,8 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CinemaManagementSystem.Startup\CinemaManagementSystem.Startup.csproj" />
-    <ProjectReference Include="..\CinemaManagmentSystem.Domain\CinemaManagementSystem.Domain.csproj" />
+    <ProjectReference Include="..\Application\CinemaManagementSystem.Application.csproj" />
   </ItemGroup>
 
 </Project>
