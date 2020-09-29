@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace CinemaManagementSystem.Infrastructure.Persistence.Migrations
+namespace CinemaManagementSystem.Infrastructure.Common.Persistence.Migrations
 {
     public partial class InitialDomainTables : Migration
     {

@@ -1,10 +1,11 @@
-﻿using CinemaManagementSystem.Domain.CinemasManagment.Models.Cinemas;
-
-namespace CinemaManagementSystem.Infrastructure.Common.Persistence
+﻿namespace CinemaManagementSystem.Infrastructure.Common.Persistence
 {
     using System.Reflection;
     using Microsoft.EntityFrameworkCore;
-    internal class CinemaManagementSystemDbContext : DbContext
+    using Domain.CinemasManagment.Models.Cinemas;
+    using Identity;
+    using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+    internal class CinemaManagementSystemDbContext : IdentityDbContext<User>
     {
         public CinemaManagementSystemDbContext(DbContextOptions<CinemaManagementSystemDbContext> options)
                 : base(options)

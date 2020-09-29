@@ -1,12 +1,12 @@
-﻿using CinemaManagementSystem.Application.Common.Contracts;
-
-namespace CinemaManagementSystem.Infrastructure
+﻿namespace CinemaManagementSystem.Infrastructure
 {
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Common.Persistence;
     using Microsoft.EntityFrameworkCore;
-    using Domain.Common;
+    using CinemaManagementSystem.Application.Common.Contracts;
+    using Common;
+
 
 
     public static class InfrastructureConfiguration
@@ -16,6 +16,7 @@ namespace CinemaManagementSystem.Infrastructure
             IConfiguration configuration)
             => services
                 .AddDatabase(configuration)
+                .AddTransient<IInitializer, CinemaManagementDbInitializer>()
                 .AddTransient(typeof(IRepository<>), typeof
                     (DataRepository<>));
 

@@ -1,8 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-
-namespace CinemaManagementSystem.Domain.Common.Models
+﻿namespace CinemaManagementSystem.Domain.Common.Models
 {
+    using System.Collections.Generic;
+    using System.Linq;
 
     public abstract class Entity<TId> : IEntity
         where TId : struct
