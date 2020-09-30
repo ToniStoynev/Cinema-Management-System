@@ -2,9 +2,11 @@
 {
     using Application.Common.Contracts;
     using Domain.CinemasManagment.Models.Cinemas;
-    using System.Collections.Generic;
     using Microsoft.AspNetCore.Mvc;
     using System.Linq;
+    using Application.Common;
+    using Microsoft.Extensions.Options;
+
 
 
 
@@ -13,12 +15,20 @@
     public class CinemasController : ControllerBase
     {
         private readonly IRepository<Cinema> cinemas;
+        private readonly IOptions<ApplicationSettings> settings;
 
-        public CinemasController(IRepository<Cinema> cinemas) => this.cinemas = cinemas;
+        public CinemasController(IRepository<Cinema> cinemas, IOptions<ApplicationSettings> settings)
+        {
+            this.cinemas = cinemas;
+            this.settings = settings;
+        }
 
 
         [HttpGet]
-        public IEnumerable<Cinema> Get()
-            => this.cinemas.All().ToList();
+        public object Get() => new 
+        {
+            Setting = this.settings,
+            Cinemas = this.cinemas.All().ToList()
+        };
     }
 }
