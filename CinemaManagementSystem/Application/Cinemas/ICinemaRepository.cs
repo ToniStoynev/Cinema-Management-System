@@ -1,4 +1,4 @@
-﻿using CinemaManagementSystem.Domain.CinemasManagment.Models.Cinemas;
+﻿using CinemaManagementSystem.Domain.CinemasManagement.Models.Cinemas;
 
 namespace CinemaManagementSystem.Application.Cinemas
 {

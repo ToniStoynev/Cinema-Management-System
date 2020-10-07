@@ -4,6 +4,7 @@
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
+    using Domain;
     using Infrastructure;
     using Microsoft.Extensions.Hosting;
     using Application;
@@ -22,6 +23,7 @@
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
             => services
+                .AddDomain()
                 .AddApplication(Configuration)
                 .AddInfrastructure(Configuration)
                 .AddWebComponents();

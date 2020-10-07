@@ -1,7 +1,8 @@
-﻿namespace CinemaManagementSystem.Web.Features
+﻿using CinemaManagementSystem.Domain.CinemasManagement.Models.Cinemas;
+
+namespace CinemaManagementSystem.Web.Features
 {
     using Application.Common.Contracts;
-    using Domain.CinemasManagment.Models.Cinemas;
     using Microsoft.AspNetCore.Mvc;
     using System.Linq;
     using Application.Common;
