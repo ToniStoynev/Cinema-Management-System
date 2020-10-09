@@ -4,6 +4,7 @@
     public class User : IdentityUser
     {
         internal User(string email)
+            : base(email)
             => this.Email = email;
     }
 }

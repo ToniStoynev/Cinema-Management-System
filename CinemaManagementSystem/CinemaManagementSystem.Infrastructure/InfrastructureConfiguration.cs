@@ -85,6 +85,7 @@
                 });
 
             services.AddTransient<IIdentity, IdentityService>();
+            services.AddTransient<IJwtTokenGenerator, JwtTokenGeneratorService>();
 
             return services;
         }
