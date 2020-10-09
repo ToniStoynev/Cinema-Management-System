@@ -19,12 +19,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Application\CinemaManagementSystem.Application.csproj" />
-    <ProjectReference Include="..\CinemaManagementSystem.Application\CinemaManagementSystem.Application.csproj" />
-    <ProjectReference Include="..\CinemaManagementSystem.Domain\CinemaManagementSystem.Domain.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Cinemas\Repositories\" />
   </ItemGroup>
 
 </Project>

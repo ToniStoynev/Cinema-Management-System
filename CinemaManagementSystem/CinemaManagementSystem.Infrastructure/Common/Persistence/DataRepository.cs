@@ -6,16 +6,15 @@
     using System.Linq;
     using Application.Common.Contracts;
 
-
-    internal class DataRepository<TEntity> : IRepository<TEntity>
+    internal abstract class DataRepository<TEntity> : IRepository<TEntity>
         where TEntity: class, IAggregateRoot
     {
         private readonly CinemaManagementSystemDbContext db;
-        public DataRepository(CinemaManagementSystemDbContext db) => this.db = db;
+        protected DataRepository(CinemaManagementSystemDbContext db) => this.db = db;
 
-        public IQueryable<TEntity> All() => this.db.Set<TEntity>();
+        protected IQueryable<TEntity> All() => this.db.Set<TEntity>();
 
-        public  Task<int> SaveChanges(CancellationToken cancellationToken = default)
+        protected Task<int> SaveChanges(CancellationToken cancellationToken = default)
             => this.db.SaveChangesAsync(cancellationToken);
 
     }

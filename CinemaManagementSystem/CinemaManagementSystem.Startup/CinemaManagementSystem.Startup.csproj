@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -15,10 +15,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Application\CinemaManagementSystem.Application.csproj" />
-    <ProjectReference Include="..\CinemaManagementSystem.Application\CinemaManagementSystem.Application.csproj" />
     <ProjectReference Include="..\CinemaManagementSystem.Infrastructure\CinemaManagementSystem.Infrastructure.csproj" />
     <ProjectReference Include="..\CinemaManagementSystem.Web\CinemaManagementSystem.Web.csproj" />
-    <ProjectReference Include="..\CinemaManagmentSystem.Infrastructure\CinemaManagementSystem.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

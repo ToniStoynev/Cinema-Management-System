@@ -7,12 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Cinemas\Queries\" />
-    <Folder Include="Identity\Commands\CreateUser\" />
-    <Folder Include="Reservations\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
     <PackageReference Include="FluentValidation" Version="8.6.2" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="8.0.0" />
@@ -21,7 +15,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CinemaManagementSystem.Domain\CinemaManagementSystem.Domain.csproj" />
-    <ProjectReference Include="..\CinemaManagmentSystem.Domain\CinemaManagementSystem.Domain.csproj" />
   </ItemGroup>
 
 </Project>

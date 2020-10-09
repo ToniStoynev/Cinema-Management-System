@@ -1,35 +1,19 @@
-﻿using CinemaManagementSystem.Domain.CinemasManagement.Models.Cinemas;
-
-namespace CinemaManagementSystem.Web.Features
+﻿namespace CinemaManagementSystem.Web.Features
 {
-    using Application.Common.Contracts;
+
     using Microsoft.AspNetCore.Mvc;
-    using System.Linq;
-    using Application.Common;
-    using Microsoft.Extensions.Options;
-
-
+    using System.Threading.Tasks;
+    using Application.Cinemas.Queries.Search;
 
 
     [ApiController]
     [Route("[controller]")]
-    public class CinemasController : ControllerBase
+    public class CinemasController : ApiController
     {
-        private readonly IRepository<Cinema> cinemas;
-        private readonly IOptions<ApplicationSettings> settings;
-
-        public CinemasController(IRepository<Cinema> cinemas, IOptions<ApplicationSettings> settings)
-        {
-            this.cinemas = cinemas;
-            this.settings = settings;
-        }
-
 
         [HttpGet]
-        public object Get() => new 
-        {
-            Setting = this.settings,
-            Cinemas = this.cinemas.All().ToList()
-        };
+        public async Task<ActionResult<SearchCinemaOutputModel>> Get(
+            [FromQuery] SearchCinemaQuery query)
+            => await this.Send(query);
     }
 }

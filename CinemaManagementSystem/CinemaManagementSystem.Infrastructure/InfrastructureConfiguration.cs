@@ -21,9 +21,10 @@
             IConfiguration configuration)
             => services
                 .AddDatabase(configuration)
+                .AddRepositories()
                 .AddTransient<IInitializer, CinemaManagementDbInitializer>()
-                .AddTransient(typeof(IRepository<>), typeof
-                    (DataRepository<>));
+                .AddIdentity(configuration);
+                
 
         private  static  IServiceCollection AddDatabase(
             this IServiceCollection services,
@@ -34,14 +35,14 @@
                         configuration.GetConnectionString("DefaultConnection"),
                         b => b.MigrationsAssembly(typeof(CinemaManagementSystemDbContext).Assembly.FullName)));
 
-        //private static IServiceCollection AddRepositories(this IServiceCollection services)
-        //    => services
-        //        .Scan(scan => scan
-        //            .FromCallingAssembly()
-        //            .AddClasses(classes => classes
-        //                .AssignableTo(typeof(IDomainRepository<>)))
-        //            .AsMatchingInterface()
-        //            .WithTransientLifetime());
+        private static IServiceCollection AddRepositories(this IServiceCollection services)
+            => services
+                .Scan(scan => scan
+                    .FromCallingAssembly()
+                    .AddClasses(classes => classes
+                        .AssignableTo(typeof(IRepository<>)))
+                    .AsMatchingInterface()
+                    .WithTransientLifetime());
 
         private static IServiceCollection AddIdentity(
             this IServiceCollection services,
