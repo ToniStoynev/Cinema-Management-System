@@ -5,7 +5,7 @@ namespace CinemaManagementSystem.Domain.CinemasManagement.Models.Cinemas
 {
     using CinemaManagementSystem.Domain.Common.Models;
     using static ModelConstants.Movie;
-    public class Movie : ValueObject
+    public class Movie : Entity<int>
     {
         internal Movie(string name, short durationMinutes)
         {
@@ -13,6 +13,13 @@ namespace CinemaManagementSystem.Domain.CinemasManagement.Models.Cinemas
 
             this.Name = name;
             this.DurationMinutes = durationMinutes;
+        }
+
+        private Movie()
+        {
+
+            this.Name = default!;
+            this.DurationMinutes = default!;
         }
         public string Name { get; }
 

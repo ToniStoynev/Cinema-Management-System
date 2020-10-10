@@ -19,15 +19,19 @@
                 .Property(p => p.AvailableSeatsCount)
                 .IsRequired();
 
-            builder
-                .OwnsOne(p => p.Movie, 
-                    m =>
-                {
-                    m.WithOwner();
+            //builder
+            //    .OwnsOne(p => p.Movie, 
+            //        m =>
+            //    {
+            //        m.WithOwner();
 
-                    m.Property(mv => mv.Name);
-                    m.Property(mv => mv.DurationMinutes);
-                });
+            //        m.Property(mv => mv.Name);
+            //        m.Property(mv => mv.DurationMinutes);
+            //    });
+
+            builder
+                .HasOne(p => p.Movie)
+                .WithMany();
         }
     }
 }
