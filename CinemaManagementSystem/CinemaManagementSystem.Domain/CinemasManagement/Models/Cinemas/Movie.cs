@@ -1,9 +1,7 @@
-﻿using CinemaManagementSystem.Domain.CinemasManagement.Exceptions;
-using ModelConstants = CinemaManagementSystem.Domain.CinemasManagement.Models.ModelConstants;
-
-namespace CinemaManagementSystem.Domain.CinemasManagement.Models.Cinemas
+﻿namespace CinemaManagementSystem.Domain.CinemasManagement.Models.Cinemas
 {
-    using CinemaManagementSystem.Domain.Common.Models;
+    using Exceptions;
+    using Common.Models;
     using static ModelConstants.Movie;
     public class Movie : Entity<int>
     {

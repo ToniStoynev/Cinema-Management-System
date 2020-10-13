@@ -1,7 +1,7 @@
-﻿using CinemaManagementSystem.Domain.Common;
-
-namespace CinemaManagementSystem.Domain.CinemasManagement.Exceptions
+﻿namespace CinemaManagementSystem.Domain.CinemasManagement.Exceptions
 {
+    using Common;
+
     public class InvalidMovieException : BaseDomainException
     {
         public InvalidMovieException()

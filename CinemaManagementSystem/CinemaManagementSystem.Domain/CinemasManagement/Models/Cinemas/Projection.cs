@@ -1,11 +1,11 @@
-﻿using CinemaManagementSystem.Domain.CinemasManagement.Exceptions;
-
-namespace CinemaManagementSystem.Domain.CinemasManagement.Models.Cinemas
+﻿namespace CinemaManagementSystem.Domain.CinemasManagement.Models.Cinemas
 {
     using System;
     using Common.Models;
     using static Models.ModelConstants.Projection;
     using static Models.ModelConstants.Room;
+    using Exceptions;
+
     public class Projection : Entity<int>
     {
         internal Projection(

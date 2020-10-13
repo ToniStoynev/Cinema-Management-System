@@ -23,7 +23,7 @@
         public class Movie
         {
             public const short MinMovieDuration = 60;
-            public const short MaxMovieDuration = 240;
+            public const short MaxMovieDuration = 300;
         }
         public class Ticket
         {
