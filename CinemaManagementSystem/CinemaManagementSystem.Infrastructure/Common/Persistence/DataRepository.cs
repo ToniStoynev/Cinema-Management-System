@@ -14,8 +14,14 @@
 
         protected IQueryable<TEntity> All() => this.db.Set<TEntity>();
 
-        protected Task<int> SaveChanges(CancellationToken cancellationToken = default)
-            => this.db.SaveChangesAsync(cancellationToken);
+        public async Task Save(
+            TEntity entity,
+            CancellationToken cancellationToken = default)
+        {
+            this.db.Update(entity);
+
+            await this.db.SaveChangesAsync(cancellationToken);
+        }
 
     }
 }

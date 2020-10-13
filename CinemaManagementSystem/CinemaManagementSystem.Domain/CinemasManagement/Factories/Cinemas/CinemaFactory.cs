@@ -5,13 +5,13 @@
     using System.Collections.Generic;
     using CinemaManagementSystem.Domain.CinemasManagement.Models.Cinemas;
 
-    public class CinemaFactory : ICinemaFactory
+    internal class CinemaFactory : ICinemaFactory
     {
         private string cinemaName;
         private string address;
         private readonly List<Room> rooms;
 
-        internal CinemaFactory()
+        public CinemaFactory()
         {
             this.cinemaName = string.Empty;
             this.address = string.Empty;

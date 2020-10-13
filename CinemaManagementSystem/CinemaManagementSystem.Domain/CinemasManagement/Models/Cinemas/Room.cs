@@ -1,10 +1,8 @@
-﻿using CinemaManagementSystem.Domain.CinemasManagement.Exceptions;
-using ModelConstants = CinemaManagementSystem.Domain.CinemasManagement.Models.ModelConstants;
-
-namespace CinemaManagementSystem.Domain.CinemasManagement.Models.Cinemas
+﻿namespace CinemaManagementSystem.Domain.CinemasManagement.Models.Cinemas
 {
     using System.Collections.Generic;
     using CinemaManagementSystem.Domain.Common.Models;
+    using Exceptions;
     using static ModelConstants.Room;
 
     public class Room : Entity<int>
