@@ -18,8 +18,10 @@
 
         public async Task<Cinema> Find(int id, CancellationToken cancellationToken = default)
         {
-            return All()
-                .FirstOrDefault(x => x.Id == id)! ;
+            return  await this
+                .All()
+                .Include(c => c.Rooms)
+                .FirstOrDefaultAsync(cinema => cinema.Id == id, cancellationToken)!;
         }
 
         public async Task<IEnumerable<CinemaListingModel>> AllCinemas(CancellationToken cancellationToken = default)

@@ -12,8 +12,11 @@
     [Route("[controller]")]
     public abstract class ApiController : ControllerBase
     {
-        private IMediator? mediator;
+        public const string Id = "{id}";
+        public const string PathSeparator = "/";
 
+        private IMediator? mediator;
+        
         protected IMediator Mediator
             => this.mediator ??= this.HttpContext
                 .RequestServices

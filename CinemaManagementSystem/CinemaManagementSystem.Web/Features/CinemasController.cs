@@ -4,14 +4,23 @@
     using System.Threading.Tasks;
     using Application.Cinemas.Queries.Search;
     using Application.Cinemas.Commands.Create;
+    using Application.Cinemas.Queries.Details;
+
     using Microsoft.AspNetCore.Authorization;
 
     public class CinemasController : ApiController
     {
 
         [HttpGet]
-        public async Task<ActionResult<SearchCinemaOutputModel>> Get(
+        [Route(nameof(GetAll))]
+        public async Task<ActionResult<SearchCinemaOutputModel>> GetAll(
             [FromQuery] SearchCinemaQuery query)
+            => await this.Send(query);
+
+        [HttpGet]
+        [Route(nameof(Details) + PathSeparator + Id)]
+        public async Task<ActionResult<CinemaDetailsOutputModel>> Details(
+            [FromRoute] CinemaDetailsQuery query)
             => await this.Send(query);
 
         [HttpPost]
@@ -19,5 +28,7 @@
         public async Task<ActionResult<CreateCinemaOutputModel>> Create(
             CreateCinemaCommand command)
             => await this.Send(command);
+
+
     }
 }
