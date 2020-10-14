@@ -43,7 +43,7 @@
         {
             var cinema = new Cinema(this.cinemaName, this.address);
 
-            this.rooms.ForEach(r => cinema.AddNewRoom(r));
+            this.rooms.ForEach(r => cinema.AddNewRoom(r.Number, r.SeatsPerRow, r.Rows));
 
             return cinema;
         }

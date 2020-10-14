@@ -40,7 +40,12 @@
             return this;
         }
 
-        public void AddNewRoom(Room room) => rooms.Add(room);
+        public void AddNewRoom(int number, short seatsPerRow, short rows)
+        {
+            var room = new Room(number, seatsPerRow, rows);
+
+            this.rooms.Add(room);
+        }
 
         private void Validate(string name, string address)
         {

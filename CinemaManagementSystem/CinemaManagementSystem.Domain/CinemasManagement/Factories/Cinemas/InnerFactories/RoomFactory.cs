@@ -6,7 +6,6 @@
 
     public class RoomFactory
     {
-        //int number, short seatsPerRow, short rows
         private int number;
         private short seatsPerRow;
         private short rows;

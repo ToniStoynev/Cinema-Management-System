@@ -9,6 +9,7 @@
     using Microsoft.Extensions.Hosting;
     using Application;
     using Web;
+    using Web.Middleware;
 
 
     public class Startup
@@ -38,6 +39,7 @@
 
 
             app
+                .UseValidationExceptionHandler()
                 .UseHttpsRedirection()
                 .UseRouting()
                 .UseAuthentication()

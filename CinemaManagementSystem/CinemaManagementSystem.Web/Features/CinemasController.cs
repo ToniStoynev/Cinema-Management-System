@@ -1,4 +1,7 @@
-﻿namespace CinemaManagementSystem.Web.Features
+﻿using CinemaManagementSystem.Application.Cinemas.Commands.AddRoom;
+using CinemaManagementSystem.Application.Common;
+
+namespace CinemaManagementSystem.Web.Features
 {
     using Microsoft.AspNetCore.Mvc;
     using System.Threading.Tasks;
@@ -29,6 +32,11 @@
             CreateCinemaCommand command)
             => await this.Send(command);
 
+        [HttpPost]
+        [Route(nameof(AddRoom) + PathSeparator + Id)]
 
+        public async Task<ActionResult> AddRoom(
+            int id, AddRoomCommand command)
+            => await this.Send(command.SetId(id));
     }
 }

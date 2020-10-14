@@ -4,7 +4,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using FluentValidation.Results;
-    class ModelValidationException : Exception
+    public class ModelValidationException : Exception
     {
         public ModelValidationException()
             : base("One or more validation errors have occurred.")
