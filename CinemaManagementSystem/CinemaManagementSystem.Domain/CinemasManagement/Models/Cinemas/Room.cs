@@ -3,9 +3,11 @@
     using System.Collections.Generic;
     using CinemaManagementSystem.Domain.Common.Models;
     using Exceptions;
+    using Common;
+    using System;
     using static ModelConstants.Room;
 
-    public class Room : Entity<int>
+    public class Room : Entity<int>, IAggregateRoot
     {
         private readonly List<Projection> projections;
 
@@ -27,7 +29,18 @@
 
         public IReadOnlyCollection<Projection> Projections => projections.AsReadOnly();
 
-        public void AddProjection(Projection projection) => projections.Add(projection);
+        public void AddProjection(
+                string name, 
+                short durationMinutes,
+                DateTime startDate,
+                int availableSeatsCount)
+        {
+            var movie = new Movie(name, durationMinutes);
+
+            var projection = new Projection(movie, startDate, availableSeatsCount);
+
+            this.projections.Add(projection);
+        }
 
         private void Validate(int number, short seatsPerRow, short rows)
         {

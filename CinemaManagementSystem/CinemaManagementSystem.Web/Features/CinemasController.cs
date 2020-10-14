@@ -1,13 +1,13 @@
-﻿using CinemaManagementSystem.Application.Cinemas.Commands.AddRoom;
-using CinemaManagementSystem.Application.Common;
-
-namespace CinemaManagementSystem.Web.Features
+﻿namespace CinemaManagementSystem.Web.Features
 {
     using Microsoft.AspNetCore.Mvc;
     using System.Threading.Tasks;
     using Application.Cinemas.Queries.Search;
     using Application.Cinemas.Commands.Create;
     using Application.Cinemas.Queries.Details;
+    using Application.Cinemas.Commands.AddProjection;
+    using Application.Cinemas.Commands.AddRoom;
+    using Application.Common;
 
     using Microsoft.AspNetCore.Authorization;
 
@@ -34,9 +34,13 @@ namespace CinemaManagementSystem.Web.Features
 
         [HttpPost]
         [Route(nameof(AddRoom) + PathSeparator + Id)]
-
         public async Task<ActionResult> AddRoom(
             int id, AddRoomCommand command)
+            => await this.Send(command.SetId(id));
+
+        [HttpPost]
+        [Route(nameof(AddProjection) + PathSeparator + Id)]
+        public async Task<ActionResult> AddProjection(int id,  AddProjectionCommand command)
             => await this.Send(command.SetId(id));
     }
 }

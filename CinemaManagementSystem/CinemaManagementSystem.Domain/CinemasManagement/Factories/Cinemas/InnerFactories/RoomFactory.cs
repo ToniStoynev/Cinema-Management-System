@@ -13,9 +13,9 @@
 
         internal RoomFactory()
         {
-            this.number = default;
-            this.seatsPerRow = default;
-            this.rows = default;
+            this.number = default!;
+            this.seatsPerRow = default!;
+            this.rows = default!;
             this.projections = new List<Projection>();
         }
 
@@ -52,7 +52,7 @@
         {
             var room = new Room(this.number, this.seatsPerRow, this.rows);
 
-            this.projections.ForEach(p => room.AddProjection(p));
+           // this.projections.ForEach(p => room.AddProjection());
 
             return room;
         }

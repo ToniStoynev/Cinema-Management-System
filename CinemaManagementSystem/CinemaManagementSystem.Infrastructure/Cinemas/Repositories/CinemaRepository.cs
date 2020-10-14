@@ -41,6 +41,5 @@
                 this.All().CountAsync(cancellationToken);
         }
 
-      
     }
 }
