@@ -13,7 +13,7 @@
         public class Cinema
         {
             public const int MinCinemaName = 3;
-            public const int MaxCinemaName = 15;
+            public const int MaxCinemaName = 30;
 
             public const int MinAddressName = 5;
             public const int MaxAddressName = 25;
