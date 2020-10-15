@@ -7,8 +7,7 @@
     using System.Collections.Generic;
     using Queries.All;
     using Queries.Details;
-
-
+    
 
     public interface ICinemaRepository : IRepository<Cinema>
     {

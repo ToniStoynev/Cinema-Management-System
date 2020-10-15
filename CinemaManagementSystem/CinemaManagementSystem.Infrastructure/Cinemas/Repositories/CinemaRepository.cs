@@ -11,7 +11,7 @@
     using Application.Cinemas.Queries.All;
     using Application.Cinemas.Queries.Details;
     using System.Linq;
-
+  
 
     internal class CinemaRepository : DataRepository<Cinema>, ICinemaRepository
     {
@@ -20,15 +20,17 @@
         public CinemaRepository(CinemaManagementSystemDbContext db, IMapper mapper)
             : base(db)
             => this.mapper = mapper;
-        public async Task<Cinema> Find(int id, CancellationToken cancellationToken = default)
+        public async Task<Cinema> Find(int id, 
+            CancellationToken cancellationToken = default)
         {
             return await this
                 .All()
                 .Include(c => c.Rooms)
-                .FirstOrDefaultAsync(cinema => cinema.Id == id, cancellationToken);
+                .FirstOrDefaultAsync(c => c.Id == id, cancellationToken);
         }
 
-        public async Task<CinemaDetailsOutputModel> GetDetailsById(int id, CancellationToken cancellationToken = default)
+        public async Task<CinemaDetailsOutputModel> GetDetailsById(int id, 
+            CancellationToken cancellationToken = default)
         {
             return await this.mapper
                 .ProjectTo<CinemaDetailsOutputModel>(this.All()

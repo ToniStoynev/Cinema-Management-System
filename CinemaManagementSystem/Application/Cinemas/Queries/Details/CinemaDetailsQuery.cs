@@ -3,6 +3,8 @@
     using MediatR;
     using System.Threading;
     using System.Threading.Tasks;
+    using Domain.CinemasManagement.Specifications.Cinemas;
+
     public class CinemaDetailsQuery : IRequest<CinemaDetailsOutputModel>
     {
         public int Id { get; set; }
