@@ -1,4 +1,4 @@
-﻿namespace CinemaManagementSystem.Application.Cinemas.Queries.Search
+﻿namespace CinemaManagementSystem.Application.Cinemas.Queries.All
 {
     using System.Threading;
     using System.Threading.Tasks;
@@ -16,6 +16,7 @@
             {
                 var cinemaListingModel = await this.cinemaRepository
                     .AllCinemas(cancellationToken);
+
 
                 var totalCinemas = await cinemaRepository.Total(cancellationToken);
 

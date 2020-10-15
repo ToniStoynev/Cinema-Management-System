@@ -2,7 +2,7 @@
 {
     using Microsoft.AspNetCore.Mvc;
     using System.Threading.Tasks;
-    using Application.Cinemas.Queries.Search;
+    using Application.Cinemas.Queries.All;
     using Application.Cinemas.Commands.Create;
     using Application.Cinemas.Queries.Details;
     using Application.Cinemas.Commands.AddProjection;

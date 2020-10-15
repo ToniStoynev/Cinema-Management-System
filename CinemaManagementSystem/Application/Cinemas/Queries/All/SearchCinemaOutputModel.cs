@@ -1,4 +1,4 @@
-﻿namespace CinemaManagementSystem.Application.Cinemas.Queries.Search
+﻿namespace CinemaManagementSystem.Application.Cinemas.Queries.All
 {
     using System.Collections.Generic;
 

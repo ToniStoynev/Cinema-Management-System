@@ -6,33 +6,43 @@
     using System.Threading;
     using System.Threading.Tasks;
     using Microsoft.EntityFrameworkCore;
-    using System.Linq;
+    using AutoMapper;
     using System.Collections.Generic;
-    using Application.Cinemas.Queries.Search;
+    using Application.Cinemas.Queries.All;
+    using Application.Cinemas.Queries.Details;
+    using System.Linq;
+
 
     internal class CinemaRepository : DataRepository<Cinema>, ICinemaRepository
     {
-        public CinemaRepository(CinemaManagementSystemDbContext db) : base(db)
-        {
-        }
+        private readonly IMapper mapper;
 
+        public CinemaRepository(CinemaManagementSystemDbContext db, IMapper mapper)
+            : base(db)
+            => this.mapper = mapper;
         public async Task<Cinema> Find(int id, CancellationToken cancellationToken = default)
         {
-            return  await this
+            return await this
                 .All()
                 .Include(c => c.Rooms)
-                .FirstOrDefaultAsync(cinema => cinema.Id == id, cancellationToken)!;
+                .FirstOrDefaultAsync(cinema => cinema.Id == id, cancellationToken);
+        }
+
+        public async Task<CinemaDetailsOutputModel> GetDetailsById(int id, CancellationToken cancellationToken = default)
+        {
+            return await this.mapper
+                .ProjectTo<CinemaDetailsOutputModel>(this.All()
+                    .Where(c => c.Id == id))
+                    .FirstOrDefaultAsync(cancellationToken);
         }
 
         public async Task<IEnumerable<CinemaListingModel>> AllCinemas(CancellationToken cancellationToken = default)
         {
-            return await
-                this.All()
-                    .Select(cinema => new CinemaListingModel(
-                        cinema.Id,
-                        cinema.Name,
-                        cinema.Address))
-                    .ToListAsync(cancellationToken);
+            var query = this.All();
+
+            return await this.mapper
+                .ProjectTo<CinemaListingModel>(query)
+                .ToListAsync(cancellationToken);
         }
 
         public async Task<int> Total(CancellationToken cancellationToken = default)
