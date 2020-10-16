@@ -58,6 +58,7 @@
                     options.Password.RequireUppercase = false;
                 })
                 .AddEntityFrameworkStores<CinemaManagementSystemDbContext>();
+          
 
             var secret = configuration
                 .GetSection(nameof(ApplicationSettings))

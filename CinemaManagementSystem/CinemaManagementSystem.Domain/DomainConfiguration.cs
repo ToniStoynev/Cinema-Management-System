@@ -1,4 +1,6 @@
-﻿namespace CinemaManagementSystem.Domain
+﻿using CinemaManagementSystem.Domain.CinemasManagement.Models.Cinemas;
+
+namespace CinemaManagementSystem.Domain
 {
     using Microsoft.Extensions.DependencyInjection;
     using Common;

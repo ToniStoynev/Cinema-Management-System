@@ -202,6 +202,22 @@ namespace CinemaManagementSystem.Infrastructure.Common.Persistence.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "ab394930-e46d-4ceb-9e48-b6357808143c",
+                            ConcurrencyStamp = "2f61a8b8-887a-49db-bf9c-cafd6c0db44c",
+                            Name = "Admin",
+                            NormalizedName = "ADMIN"
+                        },
+                        new
+                        {
+                            Id = "cc0f7439-b677-498e-a54c-f4e71a261840",
+                            ConcurrencyStamp = "db2c6662-ba76-481f-a378-1a30a25240ce",
+                            Name = "User",
+                            NormalizedName = "USER"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

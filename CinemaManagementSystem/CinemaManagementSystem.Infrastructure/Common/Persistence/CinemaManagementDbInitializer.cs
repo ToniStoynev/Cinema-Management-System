@@ -19,10 +19,10 @@
              this.db = db;
              this.initialDataProviders = initialDataProviders;
         }
-
         public void Initialize()
         {
-            this.db.Database.Migrate();
+           this.db.Database.Migrate();
+
 
             foreach (var initialDataProvider in this.initialDataProviders)
             {

@@ -13,18 +13,37 @@
         private const string InvalidLoginErrorMessage = "Invalid credentials";
 
         private readonly UserManager<User> userManager;
+        private readonly RoleManager<IdentityRole> roleManager;
         private readonly IJwtTokenGenerator jwtTokenGenerator;
 
-        public IdentityService(UserManager<User> userManager, IJwtTokenGenerator jwtTokenGenerator)
+        public IdentityService(UserManager<User> userManager, 
+                IJwtTokenGenerator jwtTokenGenerator,
+                RoleManager<IdentityRole> roleManager)
         {
             this.userManager = userManager;
             this.jwtTokenGenerator = jwtTokenGenerator;
+            this.roleManager = roleManager;
         }
         public async Task<Result> Register(UserInputModel userInput)
         {
+            var isRoot = !userManager.Users.Any();
+
             var user = new User(userInput.Email);
 
             var identityResult = await this.userManager.CreateAsync(user, userInput.Password);
+
+            if (identityResult.Succeeded)
+            {
+                if (isRoot)
+                {
+                    await userManager.AddToRoleAsync(user, "Admin");
+                }
+                else
+                {
+                    await userManager.AddToRoleAsync(user, "User");
+
+                }
+            }
 
             var errors = identityResult.Errors.Select(e => e.Description);
 
@@ -48,9 +67,9 @@
                 return InvalidLoginErrorMessage;
             }
 
-            var token = this.jwtTokenGenerator.GenerateToken(user);
+            var token = await this.jwtTokenGenerator.GenerateToken(user);
 
-            return new LoginOutputModel(token);
+            return  new LoginOutputModel(token);
         }
     }
 }

@@ -1,7 +1,9 @@
 ﻿namespace CinemaManagementSystem.Infrastructure.Identity
 {
+    using System.Threading.Tasks;
+
     public interface IJwtTokenGenerator
     {
-        string GenerateToken(User user);
+       Task<string> GenerateToken(User user);
     }
 }

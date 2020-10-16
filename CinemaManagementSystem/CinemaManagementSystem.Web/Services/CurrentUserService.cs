@@ -18,6 +18,7 @@
             }
 
             this.UserId = user.FindFirstValue(ClaimTypes.NameIdentifier);
+            
         }
         public string UserId { get; }
     }

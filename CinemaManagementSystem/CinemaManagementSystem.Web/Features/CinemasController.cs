@@ -1,6 +1,4 @@
-﻿using CinemaManagementSystem.Application.Cinemas.Commands.UpdateCinema;
-
-namespace CinemaManagementSystem.Web.Features
+﻿namespace CinemaManagementSystem.Web.Features
 {
     using Microsoft.AspNetCore.Mvc;
     using System.Threading.Tasks;
@@ -10,9 +8,10 @@ namespace CinemaManagementSystem.Web.Features
     using Application.Cinemas.Commands.AddProjection;
     using Application.Cinemas.Commands.AddRoom;
     using Application.Common;
-
+    using Application.Cinemas.Commands.UpdateCinema;
     using Microsoft.AspNetCore.Authorization;
 
+    [Authorize(Roles = "Admin")]
     public class CinemasController : ApiController
     {
 
@@ -47,7 +46,7 @@ namespace CinemaManagementSystem.Web.Features
 
         [HttpPost]
         [Route(nameof(AddProjection) + PathSeparator + Id)]
-        public async Task<ActionResult> AddProjection(int id,  AddProjectionCommand command)
+        public async Task<ActionResult> AddProjection(int id, AddProjectionCommand command)
             => await this.Send(command.SetId(id));
     }
 }

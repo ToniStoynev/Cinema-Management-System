@@ -22,7 +22,6 @@
 
         public DbSet<Movie> Movies { get; set; } = default!;
 
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());

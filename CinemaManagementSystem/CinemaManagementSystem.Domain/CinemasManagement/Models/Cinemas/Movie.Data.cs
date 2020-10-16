@@ -16,6 +16,8 @@
                 new Movie("Spiderman", 180),
                 new Movie("The Godfather", 200),
                 new Movie("Fight Club", 120),
+                new Movie("Pirates", 120),
+                new Movie("Jungle", 110)
 
             };
     }
